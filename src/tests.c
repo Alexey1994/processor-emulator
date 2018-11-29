@@ -126,11 +126,16 @@ N_32 code_index = 7;
         }\
     }
 
+#define label(name)\
+    N_32 name = code_index;
+
 function int main()
 {
-    read(0);
+label(start);
+    read(1);
     write(5);
     read(2);
+    jump_if_zero(start);
 
     execute();
 
