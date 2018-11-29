@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1516646811 source:c:\Программирование\Приложения\Эмулятор простого процессора\src\tests.c
+	<windows.h>
+	<data structures/buffer/buffer.h>
+
+1543533303 source:f:\Программирование\Приложения\Эмулятор простого процессора\src\tests.c
+	<system.h>
+	<system/thread.h>
+
