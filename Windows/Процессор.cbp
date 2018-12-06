@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Потоки ввода-вывода" />
+		<Option title="Процессор" />
 		<Option pch_mode="2" />
 		<Option compiler="tcc" />
 		<Build>
@@ -35,7 +35,7 @@
 		<Linker>
 			<Add library="system_thread" />
 		</Linker>
-		<Unit filename="../src/tests.c">
+		<Unit filename="../src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>

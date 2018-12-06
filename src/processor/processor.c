@@ -1,10 +1,3 @@
-#include <system.h>
-#include <system/thread.h>
-
-
-#define ADDRESS_LENGTH 8
-#define MEMORY_LENGTH  256 //1 << ADDRESS_LENGTH
-
 Byte memory[MEMORY_LENGTH];
 
 
@@ -83,61 +76,4 @@ procedure execute()
 
         sleep_thread(100);
     }
-}
-
-
-N_32 code_index = 7;
-
-#define read(address)\
-    memory[code_index] = 1; ++code_index;\
-    memory[code_index] = 1; ++code_index;\
-    {\
-        N_32 i;\
-        N_32 address_copy = address;\
-        for(i = 0; i < ADDRESS_LENGTH; ++i)\
-        {\
-            memory[code_index] = address_copy & 1; ++code_index;\
-            address_copy >>= 1;\
-        }\
-    }
-
-#define write(address)\
-    memory[code_index] = 1; ++code_index;\
-    memory[code_index] = 0; ++code_index;\
-    {\
-        N_32 i;\
-        N_32 address_copy = address;\
-        for(i = 0; i < ADDRESS_LENGTH; ++i)\
-        {\
-            memory[code_index] = address_copy & 1; ++code_index;\
-            address_copy >>= 1;\
-        }\
-    }
-
-#define jump_if_zero(address)\
-    memory[code_index] = 0; ++code_index;\
-    {\
-        N_32 i;\
-        N_32 address_copy = address;\
-        for(i = 0; i < ADDRESS_LENGTH; ++i)\
-        {\
-            memory[code_index] = address_copy & 1; ++code_index;\
-            address_copy >>= 1;\
-        }\
-    }
-
-#define label(name)\
-    N_32 name = code_index;
-
-function int main()
-{
-label(start);
-    read(1);
-    write(5);
-    read(2);
-    jump_if_zero(start);
-
-    execute();
-
-    return 0;
 }
